@@ -73,24 +73,38 @@ namespace :warehouse do
 
         WarehouseRecord.connection.execute("TRUNCATE fact_interventions")
 
-        #fact_intervention fake data 
-        10.times do 
-            result = ["Success", "Failure", "Incomplete"].sample
-            status = ["Pending", "InProgress", "Interrupted", "Resumed", "Complete"].sample 
-        
-            FactIntervention.create!({
-                employee_id: Faker::Number.within(range: 1..50), #=> 1968353479,
-                building_id: Faker::Number.within(range: 1..50),
-                battery_id: Faker::Number.within(range: 1..50),
-                column_id: Faker::Number.within(range: 1..100),
-                elevator_id: Faker::Number.within(range: 1..10),
-                start_of_intervention: Faker::Time.backward(days: 5, period: :morning, format: :short),
-                end_of_intervention: Faker::Time.forward(days: 5, period: :morning, format: :short),
-                result: result,   #Success, Failure or Incomplete
-                report: nil, 
-                status: status    #Pending, InProgress, Interrupted, Resumed or Complete
-            })
+        #fact_intervention fake data
+        Intervention.all.each do |intervention|
+            FactIntervention.create(
+                :employee_id => intervention.Employee.id, 
+                :building_id => intervention.Building.id, 
+                :battery_id => intervention.Battery.id, 
+                :column_id => intervention.Column.id, 
+                :elevator_id => intervention.Elevator.id, 
+                :start_of_intervention => intervention.start_date_intervention, 
+                :end_of_intervention => intervention.end_date_intervention, 
+                :result => intervention.result,
+                :report => intervention.report, 
+                :status => intervention.status)
         end
+
+        # 10.times do 
+        #     result = ["Success", "Failure", "Incomplete"].sample
+        #     status = ["Pending", "InProgress", "Interrupted", "Resumed", "Complete"].sample 
+        
+        #     FactIntervention.create!({
+        #         employee_id: Faker::Number.within(range: 1..50), #=> 1968353479,
+        #         building_id: Faker::Number.within(range: 1..50),
+        #         battery_id: Faker::Number.within(range: 1..50),
+        #         column_id: Faker::Number.within(range: 1..100),
+        #         elevator_id: Faker::Number.within(range: 1..10),
+        #         start_of_intervention: Faker::Time.backward(days: 5, period: :morning, format: :short),
+        #         end_of_intervention: Faker::Time.forward(days: 5, period: :morning, format: :short),
+        #         result: result,   #Success, Failure or Incomplete
+        #         report: nil, 
+        #         status: status    #Pending, InProgress, Interrupted, Resumed or Complete
+        #     })
+        # end
         puts "Interventions Imported"
 
 
