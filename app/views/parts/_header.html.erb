@@ -41,6 +41,11 @@
                         <li><!-- CONTACT -->
                             <%= link_to "CONTACT", "#{root_path}#contact", 'data-turbolinks': false%>
                         </li>
+                        <li><!-- INTERVENTIONS -->                            
+                            <% if current_user and (current_user.superadmin_role? or current_user.employee_role?) %>
+                                <li><%= link_to "INTERVENTIONS", interventions_path %></li>
+                            <% end %>
+                        </li>
                         <li class="dropdown"><!-- SERVICES -->
                             <a class="dropdown-toggle" href="#">
                                 MY ACCOUNT

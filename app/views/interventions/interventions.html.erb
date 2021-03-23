@@ -1,0 +1,104 @@
+<html>
+    <head>
+        <%= javascript_include_tag "interventions" %>
+    </head>
+    <body class="smoothscroll enable-animation">
+        <!-- wrapper -->
+		<div id="wrapper">       
+            <!-- PAGE HEADER -->
+                <section class="page-header page-header-xlg parallax parallax-4" style = "background-image: url(<%= asset_path("Rocket_Elevator_Assets/Quote/AdobeStock_556688421.jpg") %>)">
+                    <div class="overlay dark-4"><!-- dark overlay [1 to 9 opacity] --></div>
+
+                    <div class="container">
+
+                        <div class="bold font-raleway wow fadeInUp animated">
+                            <h2 class="fs-55 fw-400 text-center">INTERVENTIONS</h2>
+                        </div>
+
+                    </div>
+                </section>
+            <!-- /PAGE HEADER -->
+
+            <!-- QUOTE FORM BEEGINS -->			
+                <!-- SECTION TITLE -->
+                    <section class="section-xs">
+                        <div class="container">
+                            <div class="heading-title heading-dotted text-center">
+                                <h2 style="font-family: Garamond, Times, serif;">Interventions Form</h2>
+                            </div>					
+                        </div>
+                    </section>
+                <!-- /SECTION TITLE -->
+                    
+                <!-- BOX SELECTION -->			
+                    <div class="card card-default">
+                        <div class="card-block">
+                            <!-- /SELECTION -->
+                            <form action="/interventions" method="post" id="interventions-form">
+								<fieldset>
+									<input type="hidden" name="action" value="contact_send" />
+
+									<div class="row">
+										<div class="col-md-4">
+											<label for="contact:subject">Customers</label>
+											<select class="form-control pointer" name="customers">
+												<option value="">--- Select ---</option>
+											</select>
+										</div>
+										<div class="col-md-4">
+											<label for="contact:subject">Buildings</label>
+											<select class="form-control pointer" name="buildings">
+												<option value="">--- Select ---</option>
+											</select>
+										</div>										
+										<div class="col-md-4">
+											<label for="contact:subject">Battery</label>
+											<select class="form-control pointer" name="battery">
+												<option value="">--- Select ---</option>												
+											</select>
+										</div>
+										<hr class="m-30" style= "max-width: 95%"/><!-- 1px line separator -->
+										<div class="col-md-4">
+											<label for="contact:subject">Column</label>
+											<select class="form-control pointer" name="column">
+												<option value="">--- Select ---</option>
+											</select>
+										</div>
+										<div class="col-md-4">
+											<label for="contact:subject">Elevator</label>
+											<select class="form-control pointer" name="elevator">
+												<option value="">--- Select ---</option>
+											</select>
+										</div>
+										<div class="col-md-4">
+											<label for="contact:subject">Employee</label>
+											<select class="form-control pointer" name="employee">
+												<option value="">--- Select ---</option>
+											</select>
+										</div>
+										<hr class="m-30" style= "max-width: 95%"/><!-- 1px line separator -->
+										<div class="col-md-12">
+											<label for="contact:message">Description</label>
+											<textarea required maxlength="5000" rows="6" class="form-control" name="description" id="int:description"></textarea>
+										</div>
+										<hr class="m-30" style= "max-width: 95%"/><!-- 1px line separator -->
+									</div>
+								</fieldset>
+
+								<div class="row">
+									<div class="col-md-12">
+										<button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> CREATE </button>
+									</div>
+								</div>
+							</form>
+                            </form>
+                        </div>
+                    </div>
+                <!-- /BOX SELECTION -->
+            <!-- /QUOTE FORM ENDS -->    
+        <div>
+        <!-- /wrapper -->
+     <!-- SCROLL TO TOP -->
+	 <a href="#" id="toTop"></a>
+    </body>
+</html>

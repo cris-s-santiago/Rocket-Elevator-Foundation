@@ -31,6 +31,7 @@
   //= require chartkick
   //= require Chart.bundle
   //= require contact
+  //= require interventions
   //= require chartkick
   //= require Chart.bundle
   //= require gmaps/google

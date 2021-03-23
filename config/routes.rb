@@ -5,25 +5,19 @@ Rails.application.routes.draw do
   resources :leads
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
-  # Authenticates Blazer Using Devise
+  # Authenticates user Using Devise
   authenticate :user, ->(user) { user.superadmin_role? or user.employee_role? } do
+    get "interventions" => "interventions#interventions"
     mount Blazer::Engine, at: "blazer"
   end
 
-  # # If Above Doesn't Work Then Uncomment Below:
-  # mount Blazer::Engine, at: "blazer"
-
-
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: "pages#index"
   get "residential" => "pages#residential"
   get "commercial" => "pages#commercial"
   get "quotes" => "pages#quote"
-
   get "/index" => "pages#index"
-
-  #get 'welcome' => 'watson#welcome'
-
   get '/watson/update' => 'watson#speak'
   
   # /quotes is the action from the form in quote.html.erb
@@ -31,5 +25,8 @@ Rails.application.routes.draw do
 
   # /leads is the action from the form in index.html.erb
   post "/leads" => "leads#create"
+
+  # /intervention is the action from the form in intervention.html.erb
+  post "/interventions" => "intervention#create"
 
 end
