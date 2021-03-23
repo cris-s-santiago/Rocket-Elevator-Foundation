@@ -1,0 +1,49 @@
+<!-- PAGE HEADER -->
+<section class="parallax parallax-4" style="  background-image:url('<%= image_path('Rocket_Elevator_Assets/Residential_page/elavator1.jpg')  %>')">
+  <div class="overlay dark-4"><!-- dark overlay [1 to 9 opacity] --></div>
+</section>
+<!-- /PAGE HEADER -->
+
+<hr class="m-20" /><!-- 1px line separator -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3 col-sm-8 offset-sm-2 box-border-shadow p-20">
+
+      <h2 class="fs-13 fw-600 mb-15">Change your password:</h2>              
+      <hr>
+
+      <div class="row">
+
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
+          <%= f.hidden_field :reset_password_token %>
+
+          <div class="field">
+            <div class="fs-12 fw-600">
+              <%= f.label :password, "New password" %><br />
+            </div>
+            <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+            <% end %>
+            <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
+          </div>
+
+          <div class="field">
+            <div class="fs-12 fw-600">
+              <%= f.label :password_confirmation, "Confirm new password" %><br />
+            </div>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+          </div>
+
+          <div class="actions">
+            <%= f.submit "Change my password" %>
+          </div>
+        <% end %>
+        <%= render "devise/shared/links" %>
+      </div>        
+    </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,72 @@
+
+        
+<!-- TOP NAV -->
+<div id="header" class="navbar-toggleable-md sticky transparent clearfix">			
+    <header id="topNav">
+        <div class="container">
+
+            <!-- Mobile Menu Button -->
+            <button class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse">
+                <i class="fa fa-bars"></i>
+            </button>
+
+            <!-- Logo -->
+            <a class="logo float-left" href="/#">
+                <%= image_tag 'Rocket_Elevator_Assets/R2', alt: 'Rocket Elevators' %>
+            </a>
+            <div class="navbar-collapse collapse float-right nav-main-collapse submenu-dark">
+                <nav class="nav-main">
+                    <ul id="topMain" class="nav nav-pills nav-main ">
+                        <li class="active"><!-- HOME -->
+                            <%= link_to "HOME", root_path, 'data-turbolinks': false%>
+                        </li>
+                        <li><!-- SERVICES -->										
+                            <a class ='dropdown-toggle'>SERVICES</a>
+                            <ul class='dropdown-menu white-space= normal'>
+                                <li><%= link_to "All services", "#{root_path}#services", 'data-turbolinks': false%></li>
+                                <li><a href="<%= residential_path %>">Residential</a></li>
+                                <li><a href="<%= commercial_path %>">Commercial</a></li>
+                                <li><a href="<%= quotes_path %>">Get a Submission</a></li>	
+                            </ul>
+                        </li>
+                        <li><!-- PORTFOLIO -->
+                            <%= link_to "PORTFOLIO", "#{root_path}#portfolio", 'data-turbolinks': false%>
+                        </li>
+                        <li><!-- NEWS -->
+                            <%= link_to "NEWS", "#{root_path}#news", 'data-turbolinks': false%>
+                        </li>
+                        <li><!-- CLIENTS -->
+                            <%= link_to "CLIENTS", "#{root_path}#clients", 'data-turbolinks': false%>										
+                        </li>
+                        <li><!-- CONTACT -->
+                            <%= link_to "CONTACT", "#{root_path}#contact", 'data-turbolinks': false%>
+                        </li>
+                        <li class="dropdown"><!-- SERVICES -->
+                            <a class="dropdown-toggle" href="#">
+                                MY ACCOUNT
+                            </a>
+                            <ul class="dropdown-menu">
+                                <% if !current_user %>
+                                    <li><%= link_to "LOGIN", new_user_session_path %></li>
+                                    <li><%= link_to "SIGN UP", new_user_registration_path %></li>
+                                <% elsif current_user.superadmin_role? %>
+                                    <li><%= link_to "BACKOFFICE", rails_admin_path %> </li>
+                                    <li><%= link_to "PROFILE", edit_user_registration_path %></li>
+                                    <li><%= link_to "LOGOUT", destroy_user_session_path, method: :delete %></li>
+                                <% elsif current_user.employee_role? %>
+                                    <li><%= link_to "BACKOFFICE", rails_admin_path %> </li>
+                                    <li><%= link_to "PROFILE", edit_user_registration_path %></li>
+                                    <li><%= link_to "LOGOUT", destroy_user_session_path, method: :delete %></li>
+                                <% else %>
+                                    <li><%= link_to "PROFILE", edit_user_registration_path %></li>
+                                    <li><%= link_to "LOGOUT", destroy_user_session_path, method: :delete %></li>
+                                <% end %>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+</div>
+<!-- /Top Nav -->

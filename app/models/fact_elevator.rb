@@ -1,0 +1,2 @@
+class FactElevator < WarehouseRecord
+end

@@ -1,0 +1,11 @@
+<div id="watson">
+    <form method="get" action="/watson/update" class="button_to">
+        <input value="Update" type="submit" />
+    </form>
+
+    <% if current_user.superadmin_role? or current_user.employee_role? %>
+        <audio id="audio" controls>
+        <source src="<%= '/watson.wav'%>" type="audio/wav">
+        </audio>
+    <%end %>    
+</div>

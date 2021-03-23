@@ -1,0 +1,324 @@
+<html>
+
+    <head>
+        <%= javascript_include_tag "quote" %>
+    </head>
+    
+	
+    <body class="smoothscroll enable-animation">
+        <!-- wrapper -->
+		<div id="wrapper">
+       
+            <!-- PAGE HEADER -->
+                <section class="page-header page-header-xlg parallax parallax-4" style = "background-image: url(<%= asset_path("Rocket_Elevator_Assets/Quote/AdobeStock_556688421.jpg") %>)">
+                    <div class="overlay dark-4"><!-- dark overlay [1 to 9 opacity] --></div>
+
+                    <div class="container">
+
+                        <div class="bold font-raleway wow fadeInUp animated">
+                            <h2 class="fs-55 fw-400 text-center">GET A SUBMISSION NOW!</h2>
+                        </div>
+
+                    </div>
+                </section>
+            <!-- /PAGE HEADER -->
+
+            
+
+            <!-- BUTTON CALLOUT -->
+                <div class="callout alert alert-border mt-1 mb-1">
+
+                    <div class="row">
+
+                        <div class="col-md-7 col-sm-8"><!-- left text -->
+                            <h3><strong>Questions?</strong></h3> &nbsp; 
+                            <p class="font-lato fs-35">
+                                We are here to help you!
+                            </p>
+                        </div><!-- /left text -->
+                
+                        
+                        <div class="col-md-4 col-sm-4 text-right"><!-- right btn -->
+                            <a class="btn btn-outline-danger" href="index.html#contact">CONTACT US <i class="fa fa-angle-right"></i></a>
+                        </div><!-- /right btn -->
+
+                    </div>
+
+                </div>
+            <!-- /BUTTON CALLOUT -->
+
+
+            <!-- QUOTE FORM BEEGINS -->			
+                <!-- SECTION TITLE -->
+                    <section class="section-xs">
+                        <div class="container">
+
+                            <div class="heading-title heading-dotted text-center">
+                                <h2 style="font-family: Garamond, Times, serif;">Price Estimation Form</h2>
+                            </div>					
+                        </div>
+                    </section>
+                <!-- /SECTION TITLE -->
+                    
+                <!-- BOX SELECTION -->			
+                    <div class="card card-default">
+                        <div class="card-block">
+
+                            <!-- /SELECTION -->
+                            <form action="/quotes" method="post" id="quotes-form">
+                                    <p style="font-size: 20px; color:black">*First Select Your Type Of Building:</p>
+
+                                    <div class="fancy-form fancy-form-select">
+                                            <select required class="form-control select2" id="mySelectBuilding" name="buildType">
+                                                <option disabled selected value="">--- Select ---</option>
+                                                <option value="residential">Residential</option>
+                                                <option value="commercial">Commercial</option>
+                                                <option value="corporate">Corporate</option>
+                                                <option value="hybrid">Hybrid</option>
+                                            </select>					
+                                        <!--
+                                            .fancy-arrow
+                                            .fancy-arrow-double
+                                        -->
+                                        <i class="fancy-arrow-"></i>
+                                    </div>
+                                <!-- /SELECTION -->
+
+
+                                <hr class="m-30" /><!-- 1px line separator -->
+
+                                <!-- fieldsChoice  -->
+                                    <div id="fieldsChoice">
+
+                                        <!-- BUILDING CHOICE FIELDS -->
+                                            <!-- RESIDENTIAL -->
+                                                <div id="residential" class="showType" style="margin-left: 30px;">
+
+                                                    <h2 class="fs-17">RESIDENTIAL DETAIL</h2>
+                                                
+                                                    <div class="row">
+                                                        <div class="col-md-2">
+                                                            <label>No. of floor</label>
+                                                            <input name="floors_residential" type="number" value="0" min="0" class="form-control" id="inputFloorResidential" oninput="validity.valid||(value='');">
+                                                        </div>
+                                                    
+                                                        <div class="col-md-2">
+                                                            <label>No. of apartment</label>
+                                                            <input name="apartments-residential" type="number" value="0" min="0" class="form-control" id="inputApartmentsResidential" oninput="validity.valid||(value='');">
+                                                        </div>
+                                                    
+                                                        <div class="col-md-2">
+                                                            <label>No. of basement</label>
+                                                            <input name="basements-residential" type="number" value="0" min="0" class="form-control" id="inputBasementResidential" oninput="validity.valid||(value='');">
+                                                        </div>									
+                                                    </div>
+
+                                                <hr class="m-30" /><!-- 1px line separator -->
+
+                                                </div>
+                                            <!-- /RESIDENTIAL -->
+
+                                            <!-- COMMERCIAL -->
+                                                <div id="commercial" class="showType" style="margin-left: 30px;">
+
+                                                    <h2 class="fs-17">COMMERCIAL DETAIL</h2>
+
+                                                    <div class="row ">
+                                                        <div class="col-md-2">
+                                                            <label>No. of commerce</label>
+                                                            <input name="commerce-commercial" type="number" value="0" min="0" class="form-control" id="inputCommerceCommercial" oninput="validity.valid||(value='');">
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <label>No. of floor</label>
+                                                            <input name="floors-commercial" type="number" value="0" min="0" class="form-control" id="inputFloorCommercial" oninput="validity.valid||(value='');">
+                                                        </div>
+
+                                                        <div class="col-md-2">
+                                                            <label>No. of basements</label>
+                                                            <input name="basements-commercial" type="number" value="0" min="0" class="form-control" id="inputBasementsCommercial" oninput="validity.valid||(value='');">
+                                                        </div>
+
+                                                        <div class="col-md-2">
+                                                            <label>No. of parking</label>
+                                                            <input name="parking-commercial" type="number" value="0" min="0" class="form-control" id="inputParkingCommercial" oninput="validity.valid||(value='');">
+                                                        </div>
+
+                                                        <div class="col-md-2">
+                                                            <label>No. of elevators cages</label>
+                                                            <input name="elevators-commercial" type="number" value="0" min="0" class="form-control" id="inputCagesCommercial" oninput="validity.valid||(value='');">
+                                                        </div>
+                                                    </div>
+
+                                                <hr class="m-30" /><!-- 1px line separator -->
+
+                                                </div>
+                                            <!-- /COMMERCIAL -->
+
+                                            <!-- CORPORATE -->
+                                                <div id="corporate" class="showType" style="margin-left: 30px;">
+
+                                                    <h2 class="fs-17">CORPORATE DETAIL</h2>
+
+                                                    <div class="row ">
+                                                        <div class="col-md-2">
+                                                            <label>No. of commerce</label>
+                                                            <input name="commerce-corporate" type="number" value="0" min="0" class="form-control" id="inputCommerceCorporate" oninput="validity.valid||(value='');">
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <label>No. of floor</label>
+                                                            <input name="floors-corporate" type="number" value="0" min="0" class="form-control" id="inputFloorCorporate" oninput="validity.valid||(value='');">
+                                                        </div>
+
+                                                        <div class="col-md-2">
+                                                            <label>No. of basements</label>
+                                                            <input name="basements-corporate" type="number" value="0" min="0" class="form-control" id="inputBasementsCorporate" oninput="validity.valid||(value='');">
+                                                        </div>
+
+                                                        <div class="col-md-2">
+                                                            <label>No. of parking</label>
+                                                            <input name="parking-corporate" type="number" value="0" min="0" class="form-control" id="inputParkingCorporate" oninput="validity.valid||(value='');">
+                                                        </div>
+
+                                                        <div class="col-md-2">
+                                                            <label>No. of occupants per floor</label>
+                                                            <input name="occupants-corporate" type="number" value="0" min="0" class="form-control" id="inputOccupantsCorporate" oninput="validity.valid||(value='');">
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <label>No. of activity hours per day:</label>
+                                                            <input name="activity-corporate" type="number" value="0" min="0" max="24" class="form-control" id="inputHoursCorporate" oninput="validity.valid||(value='');">
+                                                        </div>
+                                                    </div>
+
+                                                <hr class="m-30" /><!-- 1px line separator -->
+
+                                                </div>
+                                            <!-- /CORPORATE -->
+
+                                            <!-- HYBRID -->
+                                                <div id="hybrid" class="showType" style="margin-left: 30px;">
+
+                                                    <h2 class="fs-17">HYBRID DETAIL</h2>
+
+                                                    <div class="row ">
+                                                        <div class="col-md-2">
+                                                            <label>No. of distinct businesses</label>
+                                                            <input name="businesses-hybrid" type="number" value="0" min="0" class="form-control" id="inputCommerceHybrid" oninput="validity.valid||(value='');">
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <label>No. of floor</label>
+                                                            <input name="floors-hybrid" type="number" value="0" min="0" class="form-control" id="inputFloorHybrid" oninput="validity.valid||(value='');">
+                                                        </div>
+
+                                                        <div class="col-md-2">
+                                                            <label>No. of basements</label>
+                                                            <input name="basements-hybrid" type="number" value="0" min="0" class="form-control" id="inputBasementsHybrid" oninput="validity.valid||(value='');">
+                                                        </div>
+
+                                                        <div class="col-md-2">
+                                                            <label>No. of parking</label>
+                                                            <input name="parking-hybrid" type="number" value="0" min="0" class="form-control" id="inputParkingHybrid" oninput="validity.valid||(value='');">
+                                                        </div>
+
+                                                        <div class="col-md-2">
+                                                            <label>No. of occupants per floor</label>
+                                                            <input name="occupants-hybrid" type="number" value="0" min="0" class="form-control" id="inputOccupantsHybrid" oninput="validity.valid||(value='');">
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <label>No. of activity hours per day:</label>
+                                                            <input name="activity-hybrid" type="number" value="0" min="0" max="24" class="form-control" id="inputHoursHybrid" oninput="validity.valid||(value='');">
+                                                        </div>
+                                                    </div>
+        
+                                                    <hr class="m-30" /><!-- 1px line separator -->
+                                                    
+                                                </div>
+                                            <!-- /HYBRID -->
+
+                                            <!-- ADDITIONAL INFO  -->
+                                                <div class="input-group">  
+                                                    <div class="input-group">
+                                                        <p style="font-size: 20px; color:black">*Enter Your Contact Information:</p>
+                                                    </div>
+
+                                                    <input type="text" name="company_name" class="form-control" placeholder="*Company Name" minlength="5" maxlength="255" required>
+                                                    <input type="text" name="contact_name" class="form-control" placeholder="*Contact's Name" minlength="3" maxlength="20" required>
+                                                    <input type="email" name="email" class="form-control" placeholder="*Email Address" minlength="9" maxlength="50" required>
+                                                </div><!-- /input-group -->
+                                                <input type="hidden" name="FullName" /> <!-- Do not delete this otherwise company_name won't display in input fields in the DB -->
+
+                                            <!-- /ADDITONAL INFO -->
+
+                                        <!-- /BUILDING CHOICE FIELDS -->
+
+                                        <hr class="m-30" /><!-- 1px line separator -->
+
+                                        <!-- SERVICE CHOICE FIELDS -->
+                                                <p style="font-size: 20px; color:black">*Please Select A Product Line</p>
+                                            <!-- STANDARD -->
+                                                <label class="typeService">
+                                                    <input type="radio" name="radio-btn" value="1" checked id="standard">
+                                                    <i></i> Standard (Price of each elevator: $7,565.00)
+                                                </label>
+                                            <!-- /STANDARD -->
+
+                                            <!-- PREMIUM-->
+                                                <label class="typeService">
+                                                    <input type="radio" name="radio-btn" value="2" id="premium">
+                                                    <i></i> Premium (Price of each elevator: $12,345.00)
+                                                </label>
+                                            <!-- /PREMIUM -->
+
+                                            <!-- EXCELIUM-->
+                                                <label class="typeService">
+                                                    <input type="radio" name="radio-btn" value="3" id="excelium">
+                                                    <i></i> Excelium (Price of each elevator: $15,400.00)
+                                                </label>
+                                            <!-- /EXCELIUM -->
+                                        <!-- SERVICE CHOICE FIELDS -->
+
+                                        <hr class="m-30" /><!-- 1px line separator -->
+
+
+                                        <div class="col-md-6">
+                                            <p style="font-size: 20px; color:black">For This Project We Will Use:</p>
+                                            <label>Number of columns = </label> &nbsp;
+                                            <input type="text" size="1" name="recommended-columns" class="form-input-fields" readonly id ="showColumns">
+                                            <br>
+                                            <label>Number of shafts = </label> &nbsp;
+                                            <input type="text" size="1" name="recommended-elevators" class="form-input-fields" readonly id="showElevators">
+                                        </div>
+
+
+                                        <hr class="m-30" /><!-- 1px line separator -->
+
+
+                                        <!-- COST -->
+                                            <div class="heading-title col-md-3">		
+                                                <label>SUB-TOTAL:<label>&nbsp; 
+                                                <input type="text" size="7" name="cost" id="cost" class="form-input-fields" readonly>
+                                                &nbsp;<br>
+                                                <label>INSTALLATION FEES:</label>&nbsp;
+                                                <input type="text" size="7" name="installation" id="installation" class="form-input-fields" readonly>
+                                                &nbsp;<br>
+                                                <label>TOTAL:</label>&nbsp;
+                                                <input type="text" size="7" name="total" id="total" class="form-input-fields" readonly>
+                                                &nbsp;
+                                            </div>	
+                                        <!-- /COST -->
+
+                                        <!--SUBMIT BUTTON -->
+                                            <button class="btn btn-outline-primary" type="submit">Submit Form<button>
+                                        <!--SUBMIT BUTTON -->
+                                    </div>
+                                <!-- /fieldsCoice -->
+                            </form>
+                        </div>
+                    </div>
+                <!-- /BOX SELECTION -->
+            <!-- /QUOTE FORM ENDS -->    
+        <div>
+        <!-- /wrapper -->
+     <!-- SCROLL TO TOP -->
+	 <a href="#" id="toTop"></a>
+    </body>
+</html>

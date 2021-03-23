@@ -1,0 +1,2 @@
+class FactContact < WarehouseRecord
+end
