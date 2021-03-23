@@ -33,4 +33,4 @@
 /config/application.yml
 sendgrid.env
 sendgrid.env
-sendgrid.env source ./sendgrid.env
+sendgrid.env source ./sendgrid.envconfig/database.yml
