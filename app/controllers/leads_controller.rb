@@ -1,8 +1,8 @@
 class LeadsController < ApplicationController
     def sendGrid_email_sender
-        # require 'sendgrid-ruby'
+        require 'sendgrid-ruby'
         mail = SendGrid::Mail.new
-        mail.from = SendGrid::Email.new(email: 'ahsantime1@gmail.com')
+        mail.from = SendGrid::Email.new(email: 'cris.s.santiago@gmail.com')
         custom = SendGrid::Personalization.new
         custom.add_to(SendGrid::Email.new(email: @lead[:email]))
         custom.add_dynamic_template_data({
@@ -13,7 +13,7 @@ class LeadsController < ApplicationController
         mail.add_personalization(custom)
 
         # Our template ID to display the one we want & our API key connector
-        mail.template_id ='d-28033aca18914f9d875a7a233454197a'
+        mail.template_id ='d-04408ca1ec43465c870562ac6db8ad6c'
         our_key = SendGrid::API.new(api_key: ENV['SENDGRID_API'])
 
         # Sends the info above to the API's website
@@ -66,7 +66,7 @@ class LeadsController < ApplicationController
             redirect_back fallback_location: root_path, notice: "Your Request was successfully created and sent!"
             
             # Sender
-            # sendGrid_email_sender()
+            sendGrid_email_sender()
         end 
         
         client = ZendeskAPI::Client.new do |config|
@@ -79,23 +79,23 @@ class LeadsController < ApplicationController
             attachment_message = "There is an attachment to this form."
         end
         
-        # ZendeskAPI::Ticket.create!(client, 
-        #     :subject => "#{@lead.full_name_of_contact} from #{@lead.company_name}", 
-        #     :comment => { 
-        #         :value => "The contact #{@lead.full_name_of_contact} from company #{@lead.company_name} who can be reached at email  #{@lead.email} and at phone number #{@lead.phone}. 
-        #             #{@lead.department_in_charge_of_elevators} has a project named #{@lead.project_name} which would require contribution from Rocket Elevators.
-        #             Project Description
-        #             #{@lead.project_description}
-        #             Attached Message: #{@lead.message}
-        #             #{attachment_message}"
-        #     }, 
-        #     :requester => { 
-        #         "name": @lead.full_name_of_contact, 
-        #         # "email": @lead.email 
-        #     },
-        #     :priority => "normal",
-        #     :type => "question"
-        #     )
+        ZendeskAPI::Ticket.create!(client, 
+            :subject => "#{@lead.full_name_of_contact} from #{@lead.company_name}", 
+            :comment => { 
+                :value => "The contact #{@lead.full_name_of_contact} from company #{@lead.company_name} who can be reached at email  #{@lead.email} and at phone number #{@lead.phone}. 
+                    #{@lead.department_in_charge_of_elevators} has a project named #{@lead.project_name} which would require contribution from Rocket Elevators.
+                    Project Description
+                    #{@lead.project_description}
+                    Attached Message: #{@lead.message}
+                    #{attachment_message}"
+            }, 
+            :requester => { 
+                "name": @lead.full_name_of_contact, 
+                # "email": @lead.email 
+            },
+            :priority => "normal",
+            :type => "question"
+            )
 
     end    
      #===================================================================================================

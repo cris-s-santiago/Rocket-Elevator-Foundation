@@ -151,26 +151,26 @@ class QuotesController < ApplicationController
       redirect_back fallback_location: root_path, notice: "Your Quote was successfully created and sent!"
     end
 
-    # client = ZendeskAPI::Client.new do |config|
-    #   config.url = ENV['ZENDESK_URL']
-    #   config.username = ENV['ZENDESK_USERNAME']
-    #   config.token = ENV['ZENDESK_TOKEN']
-    # end
+    client = ZendeskAPI::Client.new do |config|
+      config.url = ENV['ZENDESK_URL']
+      config.username = ENV['ZENDESK_USERNAME']
+      config.token = ENV['ZENDESK_TOKEN']
+    end
   
-    # ZendeskAPI::Ticket.create!(client, 
-    #   :subject => "#{@quote.contact_name} from #{@quote.company_name}", 
-    #   :comment => { 
-    #       :value => "The contact: #{@quote.contact_name}, from company: #{@quote.company_name}, who can be reached at the email: #{@quote.email}, submitted a quote for a #{@quote.building_type} building.
-    #           Based on the calculations, there are #{@quote.required_columns} columns required, with #{@quote.required_shafts} elevator shafts.
-    #           This project is calculated to cost #{@quote.sub_total}, with #{@quote.installation_fee} in installation fees, for a total price of #{@quote.total}."
-    #   }, 
-    #   :requester => { 
-    #       "name": @quote.contact_name, 
-    #       # "email": @quote.email 
-    #   },
-    #   :priority => "normal",
-    #   :type => "question"
-    #   )
+    ZendeskAPI::Ticket.create!(client, 
+      :subject => "#{@quote.contact_name} from #{@quote.company_name}", 
+      :comment => { 
+          :value => "The contact: #{@quote.contact_name}, from company: #{@quote.company_name}, who can be reached at the email: #{@quote.email}, submitted a quote for a #{@quote.building_type} building.
+              Based on the calculations, there are #{@quote.required_columns} columns required, with #{@quote.required_shafts} elevator shafts.
+              This project is calculated to cost #{@quote.sub_total}, with #{@quote.installation_fee} in installation fees, for a total price of #{@quote.total}."
+      }, 
+      :requester => { 
+          "name": @quote.contact_name, 
+          # "email": @quote.email 
+      },
+      :priority => "normal",
+      :type => "question"
+      )
 
   end # End for def Create
 

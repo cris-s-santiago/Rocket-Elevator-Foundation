@@ -1,0 +1,37 @@
+# Add configuration values here, as shown below.
+#
+# pusher_app_id: "2954"
+# pusher_key: 7381a978f7dd7f9a1117
+# pusher_secret: abdc3b896a0ffb85d373
+# stripe_api_key: sk_test_2J0l093xOyW72XUYJHE4Dv2r
+# stripe_publishable_key: pk_test_ro9jV5SNwGb1yYlQfzG17LHK
+#
+# production:
+#   stripe_api_key: sk_live_EeHnL644i6zo4Iyq4v1KdV9H
+#   stripe_publishable_key: pk_live_9lcthxpSIHbGwmdO941O1XVU
+
+#Twilio
+TWILIO_ACCOUNT_SID: AC6435040e34ab9694971d5814a5b5c704
+TWILIO_AUTH_TOKEN: 78367900f425da8c3e502fb73e1e13a9
+
+#Slack
+SLACK_API: https://hooks.slack.com/services/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
+
+#Google Maps
+GOOGLE_MAPS_API: AIzaSyBgN2Ulu9lY43SZwO3wGkIWRP3xvZjaj8Y
+
+#SendGrid
+SENDGRID_API: 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
+
+#DropBox
+DROPBOX_OAUTH_BEARER: tFYQRLINaNYAAAAAAAAAAaYBq16zCGuSkHTooDFTGhc5iZzWyFpsrkeSQadRJ-ax
+
+#SenDesk
+ZENDESK_TOKEN: lwRAEbNwPsuWGAM50eDB5vTfSVCpLLtUzEFgKes3
+ZENDESK_PASSWORD: cristiane12345
+ZENDESK_USERNAME: cris.s.santiago@gmail.com
+ZENDESK_URL: https://rocketelevators3174.zendesk.com/api/v2
+
+#IBM Watson
+TEXT_TO_SPEECH_IAM_APIKEY: bbpxLMt4jDphRRqMz1OdBuMh9mH6Wn5-T8PQGuukyZIz
+TEXT_TO_SPEECH_URL: https://api.us-south.text-to-speech.watson.cloud.ibm.com/instances/1f055d06-4984-41c2-b122-4c5de16aebf5
