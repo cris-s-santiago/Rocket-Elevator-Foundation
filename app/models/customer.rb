@@ -3,9 +3,10 @@ class Customer < ApplicationRecord
     belongs_to :address
     has_many :buildings, dependent: :destroy
     has_many :leads, dependent: :destroy
+    has_many :interventions, dependent: :destroy
 
-    # after_create :send_file_to_dropbox
-    # after_update :send_file_to_dropbox
+    after_create :send_file_to_dropbox
+    after_update :send_file_to_dropbox
 
     def send_file_to_dropbox
         dropbox = DropboxApi::Client.new

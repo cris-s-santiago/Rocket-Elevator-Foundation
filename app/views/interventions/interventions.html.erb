@@ -30,7 +30,8 @@
                     </section>
                 <!-- /SECTION TITLE -->
                     
-                <!-- BOX SELECTION -->			
+                <!-- BOX SELECTION -->
+				<%= form_with(model: @intervention, local: true) do |f| %>		
                     <div class="card card-default">
                         <div class="card-block">
                             <!-- /SELECTION -->
@@ -40,46 +41,38 @@
 
 									<div class="row">
 										<div class="col-md-4">
-											<label for="contact:subject">Customers</label>
-											<select class="form-control pointer" name="customers">
-												<option value="">--- Select ---</option>
-											</select>
+											<%= f.label :customer %>
+											<%= f.select(:customer, Customer.all.collect {|c| [c.company_name, c.id]}.sort_by(&:first), {prompt: " Select Customer "}, {class: 'form-control', id: 'customer-select'}) %>
 										</div>
 										<div class="col-md-4">
-											<label for="contact:subject">Buildings</label>
-											<select class="form-control pointer" name="buildings">
-												<option value="">--- Select ---</option>
-											</select>
+											<%= f.label :building_id %>
+											<%= f.select(:building, Building.all.collect {|b| [b.id]}, {prompt: "id"},  {class: 'form-control', id: 'building-select'})%>
 										</div>										
 										<div class="col-md-4">
-											<label for="contact:subject">Battery</label>
-											<select class="form-control pointer" name="battery">
-												<option value="">--- Select ---</option>												
-											</select>
+											<%= f.label :battery_id %>
+          									<%= f.select(:battery, Battery.all.collect {|b| [b.id]}, {prompt: "id"}, {class: 'form-control', id: 'battery-select'}) %>
 										</div>
 										<hr class="m-30" style= "max-width: 95%"/><!-- 1px line separator -->
 										<div class="col-md-4">
-											<label for="contact:subject">Column</label>
-											<select class="form-control pointer" name="column">
-												<option value="">--- Select ---</option>
-											</select>
+											<div class="field">
+												<%= f.label :column %>
+												<%= f.select(:column, Column.all.collect {|c| [c.id]}, {prompt: "id"}, {class: 'form-control', id: 'column-select'}) %>
+											</div>
 										</div>
 										<div class="col-md-4">
-											<label for="contact:subject">Elevator</label>
-											<select class="form-control pointer" name="elevator">
-												<option value="">--- Select ---</option>
-											</select>
+											<div class="field">
+												<%= f.label :elevator_id %>
+												<%= f.select(:elevator, Elevator.all.collect {|e| [e.id]}, {prompt: "id"}, {class: 'form-control', id: 'elevator-select'}) %>
+											</div>
 										</div>
 										<div class="col-md-4">
-											<label for="contact:subject">Employee</label>
-											<select class="form-control pointer" name="employee">
-												<option value="">--- Select ---</option>
-											</select>
+											<%= f.label :employee_id %>
+        									<%= f.select(:employee, Employee.all.collect {|e| [e.full_name, e.id]}, {prompt: " Select your name "}, {class: 'form-control'}) %>
 										</div>
 										<hr class="m-30" style= "max-width: 95%"/><!-- 1px line separator -->
 										<div class="col-md-12">
-											<label for="contact:message">Description</label>
-											<textarea required maxlength="5000" rows="6" class="form-control" name="description" id="int:description"></textarea>
+											<%= f.label :Report %>
+											<%= f.text_area :report, class: 'form-control', required: true %>
 										</div>
 										<hr class="m-30" style= "max-width: 95%"/><!-- 1px line separator -->
 									</div>
@@ -87,13 +80,14 @@
 
 								<div class="row">
 									<div class="col-md-12">
-										<button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> CREATE </button>
+										<%= f.submit class: 'btn btn-primary', value: 'CREATE'%>
 									</div>
 								</div>
 							</form>
                             </form>
                         </div>
                     </div>
+				<% end %>
                 <!-- /BOX SELECTION -->
             <!-- /QUOTE FORM ENDS -->    
         <div>

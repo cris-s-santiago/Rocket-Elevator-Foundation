@@ -27,6 +27,9 @@ Rails.application.routes.draw do
   post "/leads" => "leads#create"
 
   # /intervention is the action from the form in intervention.html.erb
-  post "/interventions" => "intervention#create"
+  post "/interventions" => "interventions#create"
+
+  # /intervention is 
+  get '/intervention/GetData' => 'interventions#interventionGetData'
 
 end

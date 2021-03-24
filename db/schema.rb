@@ -182,20 +182,20 @@ ActiveRecord::Schema.define(version: 2021_03_23_041812) do
   end
 
   create_table "interventions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.datetime "start_date_intervention"
-    t.datetime "end_date_intervention"
-    t.string "result", default: "Incomplete"
-    t.text "report"
-    t.string "status", default: "Pending"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.bigint "author_id"
     t.bigint "customer_id"
     t.bigint "building_id"
     t.bigint "battery_id"
     t.bigint "column_id"
     t.bigint "elevator_id"
     t.bigint "employee_id"
-    t.bigint "author_id"
+    t.datetime "start_date_intervention"
+    t.datetime "end_date_intervention"
+    t.string "result", default: "Incomplete"
+    t.text "report", null: false
+    t.string "status", default: "Pending"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["author_id"], name: "index_interventions_on_author_id"
     t.index ["battery_id"], name: "index_interventions_on_battery_id"
     t.index ["building_id"], name: "index_interventions_on_building_id"
