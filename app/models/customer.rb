@@ -12,7 +12,7 @@ class Customer < ApplicationRecord
         dropbox = DropboxApi::Client.new
         Lead.where(email: self.email_of_company_contact).each do |lead|
             if !lead.attachment.nil?
-                directory = "/Apps/Rocket Elevators API Team 3/" + self.full_name_of_company_contact
+                directory = "/" + self.full_name_of_company_contact
                 begin
                     dropbox.create_folder directory
                 rescue DropboxApi::Errors::FolderConflictError => err #maybe exception
