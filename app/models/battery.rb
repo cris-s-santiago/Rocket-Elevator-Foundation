@@ -3,9 +3,4 @@ class Battery < ApplicationRecord
     belongs_to :building
     belongs_to :employee
     has_many :interventions, dependent: :destroy
-
-    # Method for format how we show in the dropdown form
-    def b_format_form
-        "#{id} - #{certificate_of_operations}"
-    end
 end
