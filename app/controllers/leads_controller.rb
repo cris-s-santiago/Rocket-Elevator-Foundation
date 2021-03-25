@@ -66,7 +66,7 @@ class LeadsController < ApplicationController
             redirect_back fallback_location: root_path, notice: "Your Request was successfully created and sent!"
             
             # Sender
-            sendGrid_email_sender()
+            #sendGrid_email_sender()
         end 
         
         client = ZendeskAPI::Client.new do |config|

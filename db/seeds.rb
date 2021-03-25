@@ -49,6 +49,18 @@ employee_list = [
     title: "Engineer",
     email: "thomas.carrier@codeboxx.biz"
   },
+  {
+    first_name: "Employee",
+    last_name: "Employee",
+    title: "Employee of Month",
+    email: "employee@employee.com"
+  },
+  {
+    first_name: "Admin",
+    last_name: "Admin",
+    title: "Admin of Month",
+    email: "admin@admin.com"
+  },
 ]
 
 puts "Seed Started"
@@ -59,7 +71,7 @@ puts "Seed Employee"
 employee_list.each do |employee|
   user = User.create!(
     email: employee[:email],
-    password: "codeboxx1",
+    password: "codeboxx",
     employee_role: true,
     user_role: false
   )
@@ -71,12 +83,6 @@ employee_list.each do |employee|
     user: user
   )
 end
-
-### Seeding Users for presentation ###
-User.create!(email: 'admin@admin.com', password: 'password', superadmin_role: 1, employee_role: 0, user_role: 0)
-User.create!(email: 'employee@employee.com', password: 'password', superadmin_role: 0, employee_role: 1, user_role: 0)
-User.create!(email: 'user@user.com', password: 'password', superadmin_role: 0, employee_role: 0, user_role: 1)
-
 
 #-----------------------------------------------### Seed Address ###-------------------------------------------------
 puts "Seed Addresses"

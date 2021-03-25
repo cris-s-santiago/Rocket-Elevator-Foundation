@@ -33,11 +33,11 @@ To login as Admin:
 1. Navigation bar : My Account
 2. Login
 3. Username: admin@admin.com
-4. Password: password
+4. Password: codeboxx
 
 To login as Employee:
 1. Username: Email of any employee
-2. Password: codeboxx1
+2. Password: codeboxx
  
  
 📌 Gems used:

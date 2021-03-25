@@ -1,98 +1,106 @@
-<html>
-    <head>
-        <%= javascript_include_tag "interventions" %>
-    </head>
-    <body class="smoothscroll enable-animation">
-        <!-- wrapper -->
-		<div id="wrapper">       
-            <!-- PAGE HEADER -->
-                <section class="page-header page-header-xlg parallax parallax-4" style = "background-image: url(<%= asset_path("Rocket_Elevator_Assets/Quote/AdobeStock_556688421.jpg") %>)">
-                    <div class="overlay dark-4"><!-- dark overlay [1 to 9 opacity] --></div>
+<%= javascript_include_tag "interventions" %>
+<!-- wrapper -->
+<div id="wrapper">       
+	<!-- PAGE HEADER -->
+		<section class="page-header page-header-xlg parallax parallax-4" style = "background-image: url(<%= asset_path("intervention.jpg") %>)">
+			<div class="overlay dark-4"><!-- dark overlay [1 to 9 opacity] --></div>
 
-                    <div class="container">
+			<div class="container">
 
-                        <div class="bold font-raleway wow fadeInUp animated">
-                            <h2 class="fs-55 fw-400 text-center">INTERVENTIONS</h2>
-                        </div>
+				<div class="bold font-raleway wow fadeInUp animated">
+					<h2 class="fs-55 fw-400 text-center">INTERVENTIONS</h2>
+				</div>
 
-                    </div>
-                </section>
-            <!-- /PAGE HEADER -->
+			</div>
+		</section>
+	<!-- /PAGE HEADER -->
 
-            <!-- QUOTE FORM BEEGINS -->			
-                <!-- SECTION TITLE -->
-                    <section class="section-xs">
-                        <div class="container">
-                            <div class="heading-title heading-dotted text-center">
-                                <h2 style="font-family: Garamond, Times, serif;">Interventions Form</h2>
-                            </div>					
-                        </div>
-                    </section>
-                <!-- /SECTION TITLE -->
-                    
-                <!-- BOX SELECTION -->
-				<%= form_with(model: @intervention, local: true) do |f| %>		
-                    <div class="card card-default">
-                        <div class="card-block">
-                            <!-- /SELECTION -->
-                            <form action="/interventions" method="post" id="interventions-form">
-								<fieldset>
-									<input type="hidden" name="action" value="contact_send" />
-
-									<div class="row">
-										<div class="col-md-4">
-											<%= f.label :customer %>
-											<%= f.select(:customer, Customer.all.collect {|c| [c.company_name, c.id]}.sort_by(&:first), {prompt: " Select Customer "}, {class: 'form-control', id: 'customer-select'}) %>
-										</div>
-										<div class="col-md-4">
-											<%= f.label :building_id %>
-											<%= f.select(:building, Building.all.collect {|b| [b.id]}, {prompt: "id"},  {class: 'form-control', id: 'building-select'})%>
-										</div>										
-										<div class="col-md-4">
-											<%= f.label :battery_id %>
-          									<%= f.select(:battery, Battery.all.collect {|b| [b.id]}, {prompt: "id"}, {class: 'form-control', id: 'battery-select'}) %>
-										</div>
-										<hr class="m-30" style= "max-width: 95%"/><!-- 1px line separator -->
-										<div class="col-md-4">
-											<div class="field">
-												<%= f.label :column %>
-												<%= f.select(:column, Column.all.collect {|c| [c.id]}, {prompt: "id"}, {class: 'form-control', id: 'column-select'}) %>
-											</div>
-										</div>
-										<div class="col-md-4">
-											<div class="field">
-												<%= f.label :elevator_id %>
-												<%= f.select(:elevator, Elevator.all.collect {|e| [e.id]}, {prompt: "id"}, {class: 'form-control', id: 'elevator-select'}) %>
-											</div>
-										</div>
-										<div class="col-md-4">
-											<%= f.label :employee_id %>
-        									<%= f.select(:employee, Employee.all.collect {|e| [e.full_name, e.id]}, {prompt: " Select your name "}, {class: 'form-control'}) %>
-										</div>
-										<hr class="m-30" style= "max-width: 95%"/><!-- 1px line separator -->
-										<div class="col-md-12">
-											<%= f.label :Report %>
-											<%= f.text_area :report, class: 'form-control', required: true %>
-										</div>
-										<hr class="m-30" style= "max-width: 95%"/><!-- 1px line separator -->
-									</div>
-								</fieldset>
-
+	<!-- QUOTE FORM BEEGINS -->			
+		<!-- SECTION TITLE -->
+			<section class="section-xs">
+				<div class="container">
+					<div class="heading-title heading-dotted text-center">
+						<h2 style="font-family: Garamond, Times, serif;">Interventions Form</h2>
+					</div>					
+				</div>
+			</section>
+		<!-- /SECTION TITLE -->
+			
+		<!-- BOX SELECTION -->
+		<%= form_with(model: @intervention, local: true) do |f| %>		
+			<div class="card card-default">
+				<div class="card-block">
+					<!-- /SELECTION -->
+					<form action="/interventions" method="post" id="interventions-form">
+						<fieldset>
+							<input type="hidden" name="action" value="contact_send" />
+							<div class= "conteiner">
 								<div class="row">
-									<div class="col-md-12">
-										<%= f.submit class: 'btn btn-primary', value: 'CREATE'%>
+									<div class="col-md-6 col-sm-6">
+										<div class="row">
+											<div class="col-md-10">
+												<%= f.label :customer %>
+												<%= f.select(:customer, Customer.all.collect {|c| [c.company_name, c.id]}.sort_by(&:first), {prompt: " Select Customer"}, {class: 'form-control', id: 'customer-select'}) %>
+											</div>
+											<hr class="m-5" style= "max-width: 80%"/><!-- 1px line separator -->
+											<div class="col-md-10" id= 'building'>
+												<%= f.label :building %>
+												<%= f.select(:building, Building.all.collect {|b| [b.id]}, {prompt: "Select Building"},  {class: 'form-control', id: 'building-select'})%>
+											</div>
+																					
+											<div class="col-md-10" id= 'battery'>
+												<hr class="m-5" style= "max-width: 80%"/><!-- 1px line separator -->
+												<%= f.label :battery %>
+												<%= f.select(:battery, Battery.all.collect {|b| [b.id]}, {prompt: "Select Battery"}, {class: 'form-control', id: 'battery-select'}) %>
+											</div>
+											
+											<div class="col-md-10">
+												<div class="field" id= 'column'>
+													<hr class="m-5" style= "max-width: 80%"/><!-- 1px line separator -->
+													<%= f.label :column %>
+													<%= f.select(:column, Column.all.collect {|c| [c.id]}, {prompt: "Select Column"}, {class: 'form-control', id: 'column-select'}) %>
+												</div>
+											</div>
+											
+											<div class="col-md-10">
+												<div class="field" id= 'elevator'>
+													<hr class="m-5" style= "max-width: 80%"/><!-- 1px line separator -->
+													<%= f.label :elevator %>
+													<%= f.select(:elevator, Elevator.all.collect {|e| [e.id]}, {prompt: "Select Elevator"}, {class: 'form-control', id: 'elevator-select'}) %>
+												</div>
+											</div>
+										</div>
 									</div>
+									<div class="col-md-6 col-sm-7">
+										<div class="row">
+											<div class="col-md-10">
+												<%= f.label :employee_id %>
+												<%= f.select(:employee, Employee.all.collect {|e| [e.full_name, e.id]}, {prompt: " Select the employee's name "}, {class: 'form-control'}) %>
+											</div>
+											<hr class="m-60" style= "max-width: 65%"/><!-- 1px line separator -->
+											<div class="col-md-10">
+												<%= f.label :Report %>
+												<%= f.text_area :report, class: 'form-control', required: true, :cols => 8, :rows => 8 %>
+											</div>
+										</div>
+									</div>
+									<hr class="m-30" style= "max-width: 90%"/><!-- 1px line separator -->
 								</div>
-							</form>
-                            </form>
-                        </div>
-                    </div>
-				<% end %>
-                <!-- /BOX SELECTION -->
-            <!-- /QUOTE FORM ENDS -->    
-        <div>
-        <!-- /wrapper -->
-     <!-- SCROLL TO TOP -->
-	 <a href="#" id="toTop"></a>
-    </body>
-</html>
+							</div>
+						</fieldset>
+						<div class="row">
+							<div class="col-md-12">
+								<%= f.submit class: 'btn btn-primary', value: 'CREATE'%>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		<% end %>
+		<!-- /BOX SELECTION -->
+	<!-- /QUOTE FORM ENDS -->    
+<div>
+<!-- /wrapper -->
+<!-- SCROLL TO TOP -->
+<a href="#" id="toTop"></a>
+

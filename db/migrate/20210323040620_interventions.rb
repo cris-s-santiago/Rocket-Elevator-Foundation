@@ -17,5 +17,6 @@ class Interventions < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
+    rename_column :interventions, :author_id, :author
   end
 end
