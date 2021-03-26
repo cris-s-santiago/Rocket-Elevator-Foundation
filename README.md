@@ -75,6 +75,6 @@ Creating new GET and PUT requests in the REST API
  PUT: Change the status of the request for action to "Completed" and add an end date and time (Timestamp).
 
 To test the new endpoints of our API you can use Postman: https://www.postman.com/ 
-We have a Workspace public, where you can easily consume our API: https://www.getpostman.com/collections/65c972d9f0f5e23ce151
+We have a Workspace public, where you can easily consume our API: https://app.getpostman.com/join-team?invite_code=d2fd10ac80e62fdc84f9319dec2a29bf&ws=99025ea3-54d1-4ece-82f7-e0afa8fc3014
 
 You can access the Rest API repository here: https://github.com/cris-s-santiago/Rocket-Elevators-Foundation-Rest-API
