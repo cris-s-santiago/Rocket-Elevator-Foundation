@@ -1,139 +1,80 @@
-Rocket_Elevators_Information_System
-🚀	Working with MVC (Model-View-Controller)	📈
+Rocket_Elevators_Information_System 🚀 📈
 
-Members of this week's team
-Kaelen Burroughs -
-Ahsan Syed -
-Cristiane Santiago -
-Olaolu Adetula -
- 
-🎯 About
-Week 4 - The main goal of this week is to transform the static site previously developed during the Genesis program and turn it into a web application on MVC (Model - View - Controller) foundations. The site must be in a state that allows you to create a new section that saves the Javascript form that calculates an estimate in the form of a purchase order.
-Expanding the relational database model
-Seeding data base with data NB: real address are used
+🎯 About Week 9 - An important part of Rocket Elevators' information system is still missing and that is the management of interventions. To add it, it is necessary to take inspiration from the elements already implemented in the current solution and use them again to implement a new entity.
+Intervention Management Requires:
 
-Week 5 - During this week, participants are exposed to a more elaborate data model and must perform basic query exercises. They will be asked to create tables, alter them and extend the concepts managed by their information system.
-Two types of databases will be requested for this exercise
-a- A relational database
-b- A data warehouse for decision-making
+  A new form to formulate the request
+  The creation of a new table
+  Saving the request for intervention in the database
+  Sending a service ticket to ZenDesk
+  The addition of an API request that returns new interventions requests
 
-Week 7 - This week, the task set to us is to integrate 7 different APIs into the Rocket Elevators website. those APIs include:
-1. Google Maps
-2. Twilio
-3. Slack
-4. DropBox
-5. SendGrid
-6. IBM Watson
-7. ZenDesk 
- 
- 
-📌 Instructions to access to the admin panel:
+📌 Some important information
+How to connect to the BackOffice:
+  Navigation bar : My Account
+  Login
+  Email: "nicolas.genest@codeboxx.biz"
+  Password: "codeboxx"
+  
+Previous APIs:
 
-To login as Admin:
-1. Navigation bar : My Account
-2. Login
-3. Username: admin@admin.com
-4. Password: codeboxx
+ Google Maps
+  In the backoffice, there is a tab labeled Map that shows all of the buildings in the Rocket Elevators database, and when a pin is clicked, information about that building is shown.
 
-To login as Employee:
-1. Username: Email of any employee
-2. Password: codeboxx
- 
- 
-📌 Gems used:
-1. gem 'bootstrap', '~> 5.0.0.beta1'
-2. gem 'jquery-rails'
-3. gem "font-awesome-rails"
-4. gem 'devise'
-5. gem 'rails_admin', '~> 2.0'
-6. gem 'toastr-rails'
-7. gem 'cancancan'
-8. gem 'rails_admin_rollincode', '~> 1.0'
-9. gem 'chartkick'
-10. gem 'faker'
-11. gem 'multiverse'
-12. gem 'blazer'
-13. gem 'figaro'
-14. gem 'slack-notifier'
-15. gem 'twilio-ruby'
-16. gem 'ibm_watson'
+ Twilio
+  The Twilio API makes it easy to send SMS. Whenever the elevator status changes to Intervention, the technical contact responsible for that building will receive an SMS, with the ID, Serial Number and Status of that elevator
 
+ Slack
+  Open the Slack app and open the channel, go to Rocket Elevators group and select elevator_operations.
+  In  the backoffice, select the elevator, change elevator status and you'll see a notife in slack about the change.
 
-📌 The queries in mysql:
-1. Employee
-2. Users
-3. Quote
-4. Address
-5. Battery
-6. Building
-7. Building Details (Extention Building)
-8. Column
-9. Customer
-10. Elevator
-11. Lead
+ Dropbox
+  The Dropbox API takes files that are uploaded via the contact form and when the contact that filled the form becomes a customer, the previously uploaded attachment will be sent to Dropbox for safekeeping.
 
-📌 The queries in postgres:
-1. Fact Quote
-2. Fact Contact
-3. Fact Elevator
-4. Dim Customer
+ Sendgrid
+  After customers fill out the contact form, the Sendgrid API will reach out to them via email to greet them and assure them that a representative will contact them shortly.
 
+ IBM Watson
+  We have an Update button that when is pressed, a function will be triggered. This function calls the IBM Watson API and receives a text to speech audio file that goes over key metrics of the company. This file can be played via the audio player embedded in the dashboard.
 
-📚 The three queries:
+ Zendesk
+  ZenDesk takes the info from a submitted lead or quote and submits it to a ticket in the ZenDesk workspace for Rocket Elevators to see and deal with.
 
---How many contact requests are made per month?
+Seed the warehouse:
+ To take the data from the MySQL database to the warehouse(Postgres) you can use a one line command: rake warehouse:import
 
-SELECT to_char(creation_date, 'YYYY-MM') as "Month"
-      ,count(contact_id) as ContactPerMonth
-  FROM public.fact_contacts
- group by "Month"
- order by "Month" desc;
+📌 New project updates
 
---How many bid solicitations are made per month?
+New "Interventions" Table
+ A new "Intervention" Table must be added to the Relational model in the MySQL database. 
 
-SELECT to_char(creation_date, 'YYYY-MM') as "Month"
-      ,count(quote_id) as QuotePerMonth
-  FROM public.fact_quotes
- group by "Month"
- order by "Month" desc;
+To access the intervention form:
 
---How many elevators per customer do we have?
+ After logging in as an employee you will have access to the intervention page, in your navigation menu.
 
- SELECT customer_id as "Customer", count(id) as ElevPerCustomers
-  FROM public.fact_elevators
- group by "Customer";
+ When selecting the Customer, you will have access to the Building dropdown, with the buildings referring to that customer.
+ After selecting the Building, you will have access to the Batteries dropdown, with the batteries referring to those buildings.
+ After selecting the Battery, you will have access to the Columns dropdown, with the columns referring to those batteries.
+ After selecting the Column, you will have access to the Elevators dropdown, with the elevators referring to those columns.
+ You will also have to sign an employee for that intervention and leave a short description.
 
-API Info
+ When creating the intervention, it will be saved in the relational database (Mysql).
 
-1. Google Maps
+Creating a Ticket in ZenDesk
 
-    In the backoffice, there is a tab labeled Map that shows all of the buildings in tehe Rocket Elevators database, and when a pin is clicked, information about that building is shown.
+ At the time of saving the service request, the website form creates a new ticket in ZenDesk. 
+To create a ticket:
 
-2. Twilio
+ Now ZenDesk also takes information from an intervention and creates a ticket in the ZenDesk workspace so that rocket elevators can see and deal with
 
-    The Twilio API makes it easy to send SMS.
-    Whenever the elevator status changes to Intervention, the technical contact responsible for that building will receive an SMS, with the ID, Serial Number and Status of that elevator.
+Creating new GET and PUT requests in the REST API
+ The REST API needs to be modified and enhanced to offer data through new interaction points:
 
-    Note: in order to receive the message, your number needs to be verified by the Twilio platform.
-    https://www.twilio.com/
-    
+ GET: Returns all fields of all intervention Request records that do not have a start date and are in "Pending" status.
+ PUT: Change the status of the intervention request to "InProgress" and add a start date and time (Timestamp).
+ PUT: Change the status of the request for action to "Completed" and add an end date and time (Timestamp).
 
-3. Slack
+To test the new endpoints of our API you can use Postman: https://www.postman.com/ 
+We have a Workspace public, where you can easily consume our API: https://www.getpostman.com/collections/65c972d9f0f5e23ce151
 
-    The Slack API runs from the Slack App created and posts to the appropriate channel via a WebHook URL, and using the slack-notifier gem to aid in posting the specified message in the channel when an elevators status is changed.
-
-4. DropBox
-
-    The DropBox API uses the dropbox_api gem as well as the DropBox App that was created to move and store files assiciated to a customer whenever the specific customer is updated or created. It does so by comparing the customers email address to the adresses of the leads, and if they match it creates a directory using the customer contact name for it and sends the file to dropbox if it isn't already there, and deletes the file from the MySQL database. The files can be viewed here: https://www.dropbox.com/home/Apps/Rocket%20Elevators%20API%20Team%203. After clicking the link, you should be able to view all the directories created by the DropBox API. If for whatever reason this link does not work, the account email is burroughsdevtest@gmail.com, and the password is Codeboxx1! . The file path to the files is then Apps/Rocket Elevators API Team 3/.
-
-5. SendGrid
-
-    For our required purposes the SendGrid API allows us the ability to create autogenerated emails that can be sent to users/clients who sign up or complete forms on Rocket Elevators. When you fill out a contact-us form an autogenerated email is sent to the email address entered into the form.   
-
-6. IBM Watson
-    
-    If you log in as administrator when you enter or click the 'BackOffice' button there is another button called 'Watson' when that is clicked- it will bring you to a new page; you will need to press the 'update' button first- then give it some time to refresh the audio contents and then you can press play and get live-updates for important information pertaining to Rocket Elevators.
-
-7. ZenDesk
-
-    ZenDesk takes the info from a submitted lead or quote and submits it to a ticket in the ZenDesk workspace for RocketElevators to see and deal with. The tickets can be seen at https://rocketelevators8608.zendesk.com/agent/filters/360208008033, and logged into using the email "olaadetula@gmail.com" and password "123456".
+You can access the Rest API repository here: https://github.com/cris-s-santiago/Rocket-Elevators-Foundation-Rest-API
