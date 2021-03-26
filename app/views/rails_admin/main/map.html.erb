@@ -15,6 +15,8 @@
 
 <script>
   // Map initialization 
+  var activeInfoWindow;
+
   function initMap() {
     const map = new google.maps.Map(document.getElementById("map"), {
       center: { lat: 41.850033, lng: -87.6500523 },
@@ -47,9 +49,16 @@
         '</div>',
       })
 
+
       // Makes the info window appear the moment we click on it
-      marker.addListener('click', function() {
+      // marker.addListener('click', function() {         
+      //   this.infowindow.open(map, this);
+      // });
+
+      marker.addListener('click', function () {
+        if (activeInfoWindow) { activeInfoWindow.close();}
         this.infowindow.open(map, this);
+        activeInfoWindow = this.infowindow;
       });
     <% end %>
   }

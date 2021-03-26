@@ -18,6 +18,10 @@ class InterventionsController < ApplicationController
           @data = ""
         end
         
+        puts "***********"
+        puts @data
+        puts "***********"
+
         return render json: @data
     end
 

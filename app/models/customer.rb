@@ -4,6 +4,8 @@ class Customer < ApplicationRecord
     has_many :buildings, dependent: :destroy
     has_many :leads, dependent: :destroy
     has_many :interventions, dependent: :destroy
+    
+    validates :full_name_of_company_contact, :presence => true
 
     after_create :send_file_to_dropbox
     after_update :send_file_to_dropbox
@@ -12,7 +14,7 @@ class Customer < ApplicationRecord
         dropbox = DropboxApi::Client.new
         Lead.where(email: self.email_of_company_contact).each do |lead|
             if !lead.attachment.nil?
-                directory = "/" + self.full_name_of_company_contact
+                directory = "/" + self.company_name
                 begin
                     dropbox.create_folder directory
                 rescue DropboxApi::Errors::FolderConflictError => err #maybe exception
