@@ -33,6 +33,7 @@ class InterventionsController < ApplicationController
         puts '******************************'
 
         @intervention.author = Employee.find_by(user_id: current_user.id).id
+        @intervention.author_type = "Employee"
         @intervention.customer_id = params[:customer]
         @intervention.building_id = params[:building]
         @intervention.battery_id = params[:battery]
@@ -55,7 +56,7 @@ class InterventionsController < ApplicationController
             # Redirect back
             redirect_back fallback_location: interventions_path, notice: "Your Request was successfully created!"
         end
-        createZendesk()
+        #createZendesk()
     end
 
     def intervention_params

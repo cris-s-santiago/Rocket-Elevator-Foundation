@@ -66,36 +66,36 @@ class LeadsController < ApplicationController
             redirect_back fallback_location: root_path, notice: "Your Request was successfully created and sent!"
             
             # Sender
-            sendGrid_email_sender()
+            #sendGrid_email_sender()
         end 
         
-        client = ZendeskAPI::Client.new do |config|
-            config.url = ENV['ZENDESK_URL']
-            config.username = ENV['ZENDESK_USERNAME']
-            config.token = ENV['ZENDESK_TOKEN']
-        end
+        # client = ZendeskAPI::Client.new do |config|
+        #     config.url = ENV['ZENDESK_URL']
+        #     config.username = ENV['ZENDESK_USERNAME']
+        #     config.token = ENV['ZENDESK_TOKEN']
+        # end
 
         if @lead.attachment
             attachment_message = "There is an attachment to this form."
         end
         
-        ZendeskAPI::Ticket.create!(client, 
-            :subject => "#{@lead.full_name_of_contact} from #{@lead.company_name}", 
-            :comment => { 
-                :value => "The contact #{@lead.full_name_of_contact} from company #{@lead.company_name} who can be reached at email  #{@lead.email} and at phone number #{@lead.phone}. 
-                    #{@lead.department_in_charge_of_elevators} has a project named #{@lead.project_name} which would require contribution from Rocket Elevators.
-                    Project Description
-                    #{@lead.project_description}
-                    Attached Message: #{@lead.message}
-                    #{attachment_message}"
-            }, 
-            :requester => { 
-                "name": @lead.full_name_of_contact, 
-                # "email": @lead.email 
-            },
-            :priority => "normal",
-            :type => "question"
-            )
+        # ZendeskAPI::Ticket.create!(client, 
+        #     :subject => "#{@lead.full_name_of_contact} from #{@lead.company_name}", 
+        #     :comment => { 
+        #         :value => "The contact #{@lead.full_name_of_contact} from company #{@lead.company_name} who can be reached at email  #{@lead.email} and at phone number #{@lead.phone}. 
+        #             #{@lead.department_in_charge_of_elevators} has a project named #{@lead.project_name} which would require contribution from Rocket Elevators.
+        #             Project Description
+        #             #{@lead.project_description}
+        #             Attached Message: #{@lead.message}
+        #             #{attachment_message}"
+        #     }, 
+        #     :requester => { 
+        #         "name": @lead.full_name_of_contact, 
+        #         # "email": @lead.email 
+        #     },
+        #     :priority => "normal",
+        #     :type => "question"
+        #     )
 
     end    
      #===================================================================================================
