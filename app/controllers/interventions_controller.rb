@@ -27,12 +27,8 @@ class InterventionsController < ApplicationController
 
     def create 
         @intervention = Intervention.new()
-        
-        puts '******************************'
-        puts params     
-        puts '******************************'
 
-        @intervention.author = Employee.find_by(user_id: current_user.id).id
+        @intervention.author = Employee.where(user_id: current_user.id).id
         @intervention.author_type = "Employee"
         @intervention.customer_id = params[:customer]
         @intervention.building_id = params[:building]

@@ -4,8 +4,7 @@ class Customer < ApplicationRecord
     has_many :buildings, dependent: :destroy
     has_many :leads, dependent: :destroy
     has_many :interventions, dependent: :destroy
-    has_many :interventions, as: :author
-    
+    #has_many :interventions, as: :author
     validates :full_name_of_company_contact, :presence => true
 
     #after_create :send_file_to_dropbox
