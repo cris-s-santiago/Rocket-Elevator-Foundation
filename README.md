@@ -1,4 +1,47 @@
-Rocket_Elevators_Information_System 🚀 📈
+![](images/week11photo01.jpg)
+
+# Rocket Elevators <img src="images/R2.png" align="right" alt="Rocket Elevators logo" width="" height="100">
+
+---
+
+## CodeBoxx Odissey - Rocket Elevators System
+
+---
+
+Project by:
+
+```ssh
+- Cristiane Santiago
+```
+
+---
+
+## Week 14:
+
+🎯 The final version of your Information System for Rocket Elevators, from an instance hosted on AWS, with Monitoring performed by:
+
+- New Relic
+- Google Analytics
+
+All the system are updated with the new databases, and monotoring system is added to:
+
+- Ruby on rails
+
+## Preview:
+## 📌 New Relic:
+
+![](images/newrelic.gif)
+
+
+## 📌 Google Analytics:
+
+![](images/googleanalytics.gif)
+
+
+
+---
+
+## Week 9:
 
 🎯 About Week 9 - An important part of Rocket Elevators' information system is still missing and that is the management of interventions. To add it, it is necessary to take inspiration from the elements already implemented in the current solution and use them again to implement a new entity.
 Intervention Management Requires:
@@ -78,3 +121,11 @@ To test the new endpoints of our API you can use Postman: https://www.postman.co
 We have a Workspace public, where you can easily consume our API: https://app.getpostman.com/join-team?invite_code=d2fd10ac80e62fdc84f9319dec2a29bf&ws=99025ea3-54d1-4ece-82f7-e0afa8fc3014
 
 You can access the Rest API repository here: https://github.com/cris-s-santiago/Rocket-Elevators-Foundation-Rest-API
+
+![](images/week11photo10.jpg)
+
+---
+
+# Codeboxx
+
+---
